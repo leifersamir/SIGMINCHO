@@ -1,0 +1,190 @@
+{% extends "admin/base_admin.html" %}
+
+{% block titulo %}
+Estadísticas
+{% endblock %}
+
+{% block encabezado %}
+Estadísticas del Sistema
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+
+    <div class="mb-4">
+
+        <h2 class="text-success fw-bold">
+            <i class="bi bi-bar-chart-fill"></i>
+            Estadísticas Generales
+        </h2>
+
+        <p class="text-muted">
+            Información general de los reportes registrados en SIGMINCHO.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-people-fill text-success display-4"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_usuarios }}
+                    </h2>
+
+                    <p class="text-muted">
+                        Usuarios
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-file-earmark-text-fill text-primary display-4"></i>
+
+                    <h2 class="fw-bold mt-3">
+                        {{ total_reportes }}
+                    </h2>
+
+                    <p class="text-muted">
+                        Reportes
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-success text-white">
+
+                    Reportes por Municipio
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="graficoMunicipios"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-success text-white">
+
+                    Estado de Reportes
+
+                </div>
+
+                <div class="card-body">
+
+                    <canvas id="graficoEstados"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const municipios = [
+{% for m in municipios %}
+"{{ m[0] }}",
+{% endfor %}
+];
+
+const cantidadMunicipios = [
+{% for m in municipios %}
+{{ m[1] }},
+{% endfor %}
+];
+
+new Chart(document.getElementById("graficoMunicipios"),{
+
+type:"bar",
+
+data:{
+
+labels:municipios,
+
+datasets:[{
+
+label:"Reportes",
+
+data:cantidadMunicipios
+
+}]
+
+}
+
+});
+
+const estados = [
+{% for e in estados %}
+"{{ e[0] }}",
+{% endfor %}
+];
+
+const cantidadEstados = [
+{% for e in estados %}
+{{ e[1] }},
+{% endfor %}
+];
+
+new Chart(document.getElementById("graficoEstados"),{
+
+type:"pie",
+
+data:{
+
+labels:estados,
+
+datasets:[{
+
+data:cantidadEstados
+
+}]
+
+}
+
+});
+
+</script>
+
+{% endblock %}

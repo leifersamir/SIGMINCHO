@@ -1,0 +1,645 @@
+
+/* =====================================================
+   PANEL ADMINISTRATIVO
+   Proyecto: Minería Ilegal en el Chocó
+=====================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#f4f6f9;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/*==============================
+SIDEBAR
+==============================*/
+
+.sidebar{
+
+    width:260px;
+
+    min-height:100vh;
+
+    background:#145A32;
+
+    color:white;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    padding:25px;
+
+    box-shadow:5px 0 20px rgba(0,0,0,.15);
+
+}
+
+.sidebar .logo{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+.sidebar .logo img{
+
+    border-radius:50%;
+
+    background:white;
+
+    padding:10px;
+
+    margin-bottom:15px;
+
+}
+
+.sidebar .logo h4{
+
+    font-weight:bold;
+
+    margin-bottom:3px;
+
+}
+
+.sidebar .logo small{
+
+    color:#d5d8dc;
+
+}
+
+/*==============================
+MENU
+==============================*/
+
+.sidebar a{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:14px 18px;
+
+    margin-bottom:10px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+.sidebar a i{
+
+    width:28px;
+
+}
+
+.sidebar a:hover{
+
+    background:#1E8449;
+
+    transform:translateX(6px);
+
+}
+
+.sidebar a.active{
+
+    background:white;
+
+    color:#145A32;
+
+    font-weight:bold;
+
+}
+
+/*==============================
+USUARIO
+==============================*/
+
+.usuario{
+
+    text-align:center;
+
+    margin:30px 0;
+
+}
+
+.usuario i{
+
+    font-size:60px;
+
+}
+
+.usuario p{
+
+    margin-top:10px;
+
+    margin-bottom:0;
+
+    font-weight:bold;
+
+}
+
+.usuario small{
+
+    color:#d5d8dc;
+
+}
+
+/*==============================
+CONTENIDO
+==============================*/
+
+.contenido{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    min-height:100vh;
+
+}
+
+/*==============================
+TOPBAR
+==============================*/
+
+.topbar{
+
+    background:white;
+
+    padding:20px 35px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+
+}
+
+.topbar h3{
+
+    margin:0;
+
+    color:#145A32;
+
+    font-weight:bold;
+
+}
+
+/*==============================
+CUERPO
+==============================*/
+
+.contenido-principal{
+
+    padding:35px;
+
+}
+/*=====================================================
+    TARJETAS DEL DASHBOARD
+=====================================================*/
+
+.card-dashboard{
+
+    border:none;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+    background:white;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+.card-dashboard h2{
+
+    font-size:36px;
+
+    font-weight:bold;
+
+    color:#145A32;
+
+    margin:0;
+
+}
+
+.card-dashboard small{
+
+    font-size:15px;
+
+    color:#6c757d;
+
+}
+
+.icon-card{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:30px;
+
+}
+
+/*=====================================================
+    TABLAS
+=====================================================*/
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table thead{
+
+    background:#145A32;
+
+    color:white;
+
+}
+
+.table th{
+
+    border:none;
+
+    padding:15px;
+
+    vertical-align:middle;
+
+}
+
+.table td{
+
+    vertical-align:middle;
+
+    padding:14px;
+
+}
+
+.table tbody tr{
+
+    transition:.3s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f5fff6;
+
+}
+
+/*=====================================================
+    CARDS GENERALES
+=====================================================*/
+
+.card{
+
+    border:none;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.card-header{
+
+    font-weight:bold;
+
+    font-size:17px;
+
+    background:#145A32 !important;
+
+    color:white !important;
+
+}
+
+/*=====================================================
+    BOTONES
+=====================================================*/
+
+.btn-success{
+
+    background:#145A32;
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:#1E8449;
+
+}
+
+.btn-primary{
+
+    border:none;
+
+}
+
+.btn-warning{
+
+    color:white;
+
+}
+
+.btn{
+
+    border-radius:10px;
+
+}
+/*=====================================================
+    RESPONSIVE
+=====================================================*/
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:220px;
+
+    }
+
+    .contenido{
+
+        margin-left:220px;
+
+        width:calc(100% - 220px);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        min-height:auto;
+
+    }
+
+    .contenido{
+
+        margin-left:0;
+
+        width:100%;
+
+    }
+
+    .topbar{
+
+        padding:18px;
+
+    }
+
+    .contenido-principal{
+
+        padding:20px;
+
+    }
+
+    .card-dashboard{
+
+        margin-bottom:20px;
+
+    }
+
+}
+
+/*=====================================================
+    SCROLL PERSONALIZADO
+=====================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ecf0f1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#145A32;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1E8449;
+
+}
+
+/*=====================================================
+    ANIMACIONES
+=====================================================*/
+
+.card{
+
+    animation:aparecer .5s ease;
+
+}
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*=====================================================
+    EFECTOS
+=====================================================*/
+
+.shadow-hover{
+
+    transition:.3s;
+
+}
+
+.shadow-hover:hover{
+
+    box-shadow:0 15px 35px rgba(0,0,0,.18);
+
+}
+
+.text-verde{
+
+    color:#145A32;
+
+}
+
+.bg-verde{
+
+    background:#145A32;
+
+}
+
+.bg-verde-claro{
+
+    background:#1E8449;
+
+}
+
+/*=====================================================
+    BADGES
+=====================================================*/
+
+.badge{
+
+    padding:8px 12px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+}
+
+/*=====================================================
+    INPUTS
+=====================================================*/
+
+.form-control{
+
+    border-radius:10px;
+
+}
+
+.form-control:focus{
+
+    border-color:#145A32;
+
+    box-shadow:0 0 0 .2rem rgba(20,90,50,.15);
+
+}
+
+/*=====================================================
+    FOOTER
+=====================================================*/
+
+.footer-admin{
+
+    margin-top:50px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+
+    padding:20px;
+
+}
+
+/*=========================================
+    AVATAR DE USUARIOS
+=========================================*/
+
+.avatar{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    background:#145A32;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-weight:bold;
+
+    font-size:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+}
+/*=========================================
+    BADGES DE ROLES
+=========================================*/
+
+.badge-admin{
+
+    background:#dc3545;
+
+    color:white;
+
+}
+
+.badge-user{
+
+    background:#0d6efd;
+
+    color:white;
+
+}
+
+.badge-estado{
+
+    background:#198754;
+
+    color:white;
+
+}

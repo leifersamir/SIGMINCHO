@@ -1,0 +1,256 @@
+{% extends "admin/base_admin.html" %}
+
+{% block titulo %}
+Dashboard
+{% endblock %}
+
+{% block encabezado %}
+Dashboard
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+    <div class="alert alert-success shadow-sm border-0 mb-4">
+
+    <h4 class="mb-1">
+
+        👋 Bienvenido, {{ session["nombre"] }}
+
+    </h4>
+
+    <p class="mb-0">
+
+        Nos alegra tenerte nuevamente en <strong>SIGMINCHO</strong>. Desde este panel puedes administrar usuarios, reportes y realizar el seguimiento de la minería ilegal en el departamento del Chocó.
+
+    </p>
+
+</div>
+
+    <!-- Tarjetas -->
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card card-dashboard">
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">Usuarios</small>
+
+                        <h2>{{ total_usuarios }}</h2>
+
+                    </div>
+
+                    <div class="icon-card bg-primary">
+
+                        <i class="bi bi-people-fill"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card card-dashboard">
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">Reportes</small>
+
+                        <h2>{{ total_reportes }}</h2>
+
+                    </div>
+
+                    <div class="icon-card bg-success">
+
+                        <i class="bi bi-file-earmark-text-fill"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card card-dashboard">
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">Municipios</small>
+
+                        <h2>{{ total_municipios }}</h2>
+
+                    </div>
+
+                    <div class="icon-card bg-warning">
+
+                        <i class="bi bi-geo-alt-fill"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="card card-dashboard">
+
+                <div class="card-body d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">Evidencias</small>
+
+                        <h2>{{ total_evidencias }}</h2>
+
+                    </div>
+
+                    <div class="icon-card bg-danger">
+
+                        <i class="bi bi-camera-fill"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabla -->
+    <div class="card mt-5">
+
+    <div class="card-header d-flex justify-content-between align-items-center">
+
+        <h5 class="mb-0">
+
+            <i class="bi bi-clock-history"></i>
+
+            Últimos reportes recibidos
+
+        </h5>
+
+        <span class="badge bg-light text-dark">
+
+            {{ total_reportes }} reportes
+
+        </span>
+
+    </div>
+
+    <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Municipio</th>
+
+                            <th>Descripción</th>
+
+                            <th>Fecha</th>
+
+                            <th>Evidencia</th>
+                            
+                            <th>Estado</th>
+
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for r in reportes %}
+
+                        <tr>
+
+                            <td>{{ r[0] }}</td>
+
+                            <td>{{ r[1] }}</td>
+
+                            <td>{{ r[2] }}</td>
+
+                            <td>{{ r[4] }}</td>
+
+                           <td>
+
+<a href="{{ url_for('static', filename='uploads/' + r[3]) }}"
+target="_blank"
+class="btn btn-success btn-sm">
+
+<i class="bi bi-image"></i>
+
+Ver
+
+</a>
+
+</td>
+
+<td>
+
+<span class="badge bg-warning text-dark">
+
+Pendiente
+
+</span>
+
+</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="footer-admin">
+
+    <hr>
+
+    <p>
+
+        <strong>SIGMINCHO </strong>
+
+        <br>
+
+        Sistema de Información para la Gestión de Reportes de Minería Ilegal en el Chocó.
+
+    </p>
+
+</div>
+
+{% endblock %}

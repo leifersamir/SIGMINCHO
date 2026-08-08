@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="SIGMINCHO - Sistema de información y sensibilización sobre la minería ilegal en el Chocó">
+
+    <title>Minería Ilegal en el Chocó | SIGMINCHO</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- AOS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+<!-- ========================================================= -->
+<!-- NAVBAR -->
+<!-- ========================================================= -->
+
+<header class="site-header">
+
+    <nav class="navbar navbar-expand-lg">
+
+        <div class="container">
+
+            <a href="#inicio" class="navbar-brand">
+
+                <span class="logo-icon">🌳</span>
+
+                <span class="logo-text">
+                    SIGMINCHO
+                </span>
+
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal"
+                    aria-expanded="false"
+                    aria-label="Abrir menú">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div class="collapse navbar-collapse"
+                 id="menuPrincipal">
+
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#impacto">
+                            Impacto Ambiental
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#social">
+                            Impacto Social
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#soluciones">
+                            Soluciones
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reportar">
+                            Reportar
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#conclusion">
+                            Conclusión
+                        </a>
+                    </li>
+
+                    <li class="nav-item ms-lg-3">
+
+                        <a href="/mis_reportes"
+                           class="nav-link btn-nav-reportes">
+
+                            <i class="bi bi-folder2-open"></i>
+
+                            Mis reportes
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+
+                        <a href="/logout"
+                           class="btn btn-logout">
+
+                            <i class="bi bi-box-arrow-right"></i>
+
+                            Cerrar sesión
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ========================================================= -->
+<!-- INICIO / HERO -->
+<!-- ========================================================= -->
+
+<section id="inicio" class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+
+        <div class="hero-text"
+             data-aos="fade-up">
+
+            <div class="hero-badge">
+
+                <i class="bi bi-tree-fill"></i>
+
+                Protección del territorio chocoano
+
+            </div>
+
+            <h1>
+
+                Minería Ilegal
+                <span>en el Chocó</span>
+
+            </h1>
+
+            <p>
+
+                Conoce cómo la minería ilegal afecta los ecosistemas,
+                las comunidades y la biodiversidad del departamento
+                del Chocó, uno de los territorios con mayor riqueza
+                natural de Colombia.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#impacto"
+                   class="btn-hero-primary">
+
+                    <i class="bi bi-arrow-down-circle"></i>
+
+                    Explorar
+
+                </a>
+
+                <a href="#reportar"
+                   class="btn-hero-secondary">
+
+                    <i class="bi bi-megaphone-fill"></i>
+
+                    Reportar evidencia
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- MENSAJE DE BIENVENIDA -->
+<!-- ========================================================= -->
+
+<section class="welcome-section">
+
+    <div class="container">
+
+        <div class="welcome-card"
+             data-aos="fade-up">
+
+            <div class="welcome-icon">
+
+                <i class="bi bi-person-circle"></i>
+
+            </div>
+
+            <div>
+
+                <span class="welcome-small">
+                    Bienvenido
+                </span>
+
+                <h3>
+                    {{ nombre }}
+                </h3>
+
+                <p>
+                    Gracias por participar en la protección del territorio
+                    y los recursos naturales del Chocó.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- IMPACTO AMBIENTAL -->
+<!-- ========================================================= -->
+
+<section id="impacto"
+         class="section ambiental-section">
+
+    <div class="container">
+
+        <div class="section-title"
+             data-aos="fade-up">
+
+            <span class="section-label">
+                <i class="bi bi-globe-americas"></i>
+                Medio ambiente
+            </span>
+
+            <h2>
+                Impacto Ambiental
+            </h2>
+
+            <p>
+
+                La minería ilegal ha ocasionado graves daños en los
+                ecosistemas del Chocó, afectando ríos, bosques,
+                suelos y biodiversidad.
+
+            </p>
+
+        </div>
+
+
+        <!-- Río -->
+
+        <div class="impact-row"
+             data-aos="fade-right">
+
+            <div class="impact-image">
+
+                <img src="{{ url_for('static', filename='img/rio.jpg') }}"
+                     alt="Río afectado por la minería ilegal">
+
+            </div>
+
+            <div class="impact-text">
+
+                <span class="impact-number">
+                    01
+                </span>
+
+                <h3>
+
+                    <i class="bi bi-water"></i>
+
+                    Contaminación de los ríos
+
+                </h3>
+
+                <p>
+
+                    El uso indiscriminado de mercurio y otros químicos
+                    contamina fuentes hídricas como el río Atrato,
+                    poniendo en riesgo la salud de las comunidades
+                    y la vida acuática.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bosque -->
+
+        <div class="impact-row reverse"
+             data-aos="fade-left">
+
+            <div class="impact-image">
+
+                <img src="{{ url_for('static', filename='img/bosque.jpg') }}"
+                     alt="Bosque afectado por la minería ilegal">
+
+            </div>
+
+            <div class="impact-text">
+
+                <span class="impact-number">
+                    02
+                </span>
+
+                <h3>
+
+                    <i class="bi bi-tree-fill"></i>
+
+                    Deforestación
+
+                </h3>
+
+                <p>
+
+                    La apertura de minas ilegales provoca la destrucción
+                    de extensas áreas de bosque tropical, alterando
+                    el equilibrio ecológico del departamento.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Fauna -->
+
+        <div class="impact-row"
+             data-aos="fade-right">
+
+            <div class="impact-image">
+
+                <img src="{{ url_for('static', filename='img/fauna.jpg') }}"
+                     alt="Fauna del Chocó afectada por la minería">
+
+            </div>
+
+            <div class="impact-text">
+
+                <span class="impact-number">
+                    03
+                </span>
+
+                <h3>
+
+                    <i class="bi bi-feather"></i>
+
+                    Pérdida de biodiversidad
+
+                </h3>
+
+                <p>
+
+                    Muchas especies animales y vegetales pierden su
+                    hábitat debido a la explotación minera, reduciendo
+                    la riqueza natural del Chocó.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- IMPACTO SOCIAL -->
+<!-- ========================================================= -->
+
+<section id="social"
+         class="section social-section">
+
+    <div class="container">
+
+        <div class="section-title"
+             data-aos="fade-up">
+
+            <span class="section-label">
+                <i class="bi bi-people-fill"></i>
+                Comunidades
+            </span>
+
+            <h2>
+                Impacto Social
+            </h2>
+
+            <p>
+
+                La minería ilegal no solo afecta el medio ambiente,
+                sino también la calidad de vida de las comunidades
+                del Chocó.
+
+            </p>
+
+        </div>
+
+
+        <div class="social-grid">
+
+
+            <!-- Salud -->
+
+            <div class="social-card"
+                 data-aos="zoom-in">
+
+                <div class="social-icon">
+
+                    <img src="{{ url_for('static', filename='img/salud.png') }}"
+                         alt="Salud">
+
+                </div>
+
+                <h3>
+                    Problemas de Salud
+                </h3>
+
+                <p>
+
+                    El contacto con mercurio y aguas contaminadas
+                    puede ocasionar problemas de salud que afectan
+                    especialmente a las comunidades expuestas.
+
+                </p>
+
+            </div>
+
+
+            <!-- Educación -->
+
+            <div class="social-card"
+                 data-aos="zoom-in"
+                 data-aos-delay="100">
+
+                <div class="social-icon">
+
+                    <img src="{{ url_for('static', filename='img/educacion.png') }}"
+                         alt="Educación">
+
+                </div>
+
+                <h3>
+                    Deserción Escolar
+                </h3>
+
+                <p>
+
+                    La participación de menores en actividades
+                    relacionadas con la minería puede afectar
+                    su permanencia en el sistema educativo.
+
+                </p>
+
+            </div>
+
+
+            <!-- Conflictos -->
+
+            <div class="social-card"
+                 data-aos="zoom-in"
+                 data-aos-delay="200">
+
+                <div class="social-icon">
+
+                    <img src="{{ url_for('static', filename='img/conflicto.png') }}"
+                         alt="Conflictos">
+
+                </div>
+
+                <h3>
+                    Conflictos Sociales
+                </h3>
+
+                <p>
+
+                    La explotación ilegal puede generar conflictos,
+                    desplazamientos y disputas relacionadas con
+                    el control del territorio.
+
+                </p>
+
+            </div>
+
+
+            <!-- Comunidad -->
+
+            <div class="social-card"
+                 data-aos="zoom-in"
+                 data-aos-delay="300">
+
+                <div class="social-icon">
+
+                    <img src="{{ url_for('static', filename='img/comunidad.png') }}"
+                         alt="Comunidad">
+
+                </div>
+
+                <h3>
+                    Afectación Comunitaria
+                </h3>
+
+                <p>
+
+                    Muchas familias pueden ver afectados medios
+                    tradicionales de subsistencia como la pesca
+                    y la agricultura.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SOLUCIONES -->
+<!-- ========================================================= -->
+
+<section id="soluciones"
+         class="section solutions-section">
+
+    <div class="container">
+
+        <div class="section-title light"
+             data-aos="fade-up">
+
+            <span class="section-label">
+                <i class="bi bi-shield-check"></i>
+                Alternativas
+            </span>
+
+            <h2>
+                Soluciones
+            </h2>
+
+            <p>
+
+                La lucha contra la minería ilegal requiere el compromiso
+                de las autoridades, las comunidades y la sociedad para
+                proteger el patrimonio natural del Chocó.
+
+            </p>
+
+        </div>
+
+
+        <div class="solutions-grid">
+
+
+            <div class="solution-card"
+                 data-aos="flip-left">
+
+                <div class="solution-icon">
+                    🌱
+                </div>
+
+                <h3>
+                    Restauración Ambiental
+                </h3>
+
+                <p>
+
+                    Recuperar las áreas degradadas mediante programas
+                    de reforestación y restauración de ecosistemas.
+
+                </p>
+
+            </div>
+
+
+            <div class="solution-card"
+                 data-aos="flip-left"
+                 data-aos-delay="100">
+
+                <div class="solution-icon">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Mayor Control
+                </h3>
+
+                <p>
+
+                    Fortalecer la presencia de las autoridades para
+                    combatir la minería ilegal y proteger los recursos
+                    naturales.
+
+                </p>
+
+            </div>
+
+
+            <div class="solution-card"
+                 data-aos="flip-left"
+                 data-aos-delay="200">
+
+                <div class="solution-icon">
+                    🎓
+                </div>
+
+                <h3>
+                    Educación Ambiental
+                </h3>
+
+                <p>
+
+                    Promover campañas educativas que fomenten el cuidado
+                    del medio ambiente y el uso responsable de los recursos.
+
+                </p>
+
+            </div>
+
+
+            <div class="solution-card"
+                 data-aos="flip-left"
+                 data-aos-delay="300">
+
+                <div class="solution-icon">
+                    🤝
+                </div>
+
+                <h3>
+                    Participación Comunitaria
+                </h3>
+
+                <p>
+
+                    Involucrar a las comunidades en la toma de decisiones
+                    y en proyectos de desarrollo sostenible.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- REPORTAR EVIDENCIA -->
+<!-- ========================================================= -->
+
+<section id="reportar"
+         class="section report-section">
+
+    <div class="container">
+
+        <div class="section-title"
+             data-aos="fade-up">
+
+            <span class="section-label">
+                <i class="bi bi-megaphone-fill"></i>
+                Participación ciudadana
+            </span>
+
+            <h2>
+                Reporta un caso de minería ilegal
+            </h2>
+
+            <p>
+
+                Si conoces un caso de minería ilegal, puedes reportarlo
+                para contribuir a la protección del territorio.
+
+            </p>
+
+        </div>
+
+
+        <!-- Mensajes -->
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% if messages %}
+
+                <div class="messages-container">
+
+                    {% for categoria, mensaje in messages %}
+
+                        <div class="alert
+                            {% if categoria == 'success' %}
+                                alert-success
+                            {% else %}
+                                alert-danger
+                            {% endif %}
+                            alert-dismissible fade show"
+                            role="alert">
+
+                            <i class="bi
+                                {% if categoria == 'success' %}
+                                    bi-check-circle-fill
+                                {% else %}
+                                    bi-exclamation-triangle-fill
+                                {% endif %}
+                            "></i>
+
+                            {{ mensaje }}
+
+                            <button type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert"
+                                    aria-label="Cerrar">
+                            </button>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        <div class="report-layout">
+
+            <!-- Información -->
+
+            <div class="report-info"
+                 data-aos="fade-right">
+
+                <div class="report-info-icon">
+
+                    <i class="bi bi-shield-fill-check"></i>
+
+                </div>
+
+                <h3>
+                    Tu participación importa
+                </h3>
+
+                <p>
+
+                    La información proporcionada puede ayudar a
+                    identificar situaciones relacionadas con la
+                    minería ilegal y contribuir a la protección
+                    de los recursos naturales.
+
+                </p>
+
+
+                <div class="report-feature">
+
+                    <i class="bi bi-camera-fill"></i>
+
+                    <div>
+
+                        <strong>
+                            Evidencia
+                        </strong>
+
+                        <span>
+                            Adjunta una imagen o video.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-feature">
+
+                    <i class="bi bi-geo-alt-fill"></i>
+
+                    <div>
+
+                        <strong>
+                            Ubicación
+                        </strong>
+
+                        <span>
+                            Indica el municipio del reporte.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-feature">
+
+                    <i class="bi bi-lock-fill"></i>
+
+                    <div>
+
+                        <strong>
+                            Seguridad
+                        </strong>
+
+                        <span>
+                            Tu reporte será registrado en el sistema.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Formulario -->
+
+            <div class="report-form-card"
+                 data-aos="fade-left">
+
+                <div class="report-form-header">
+
+                    <i class="bi bi-file-earmark-plus-fill"></i>
+
+                    <div>
+
+                        <h3>
+                            Nuevo Reporte
+                        </h3>
+
+                        <span>
+                            Complete la información solicitada
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <form action="/subir_reporte"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+
+                    <!-- Municipio -->
+
+                    <div class="form-group">
+
+                        <label for="municipio">
+
+                            <i class="bi bi-geo-alt-fill"></i>
+
+                            Municipio
+
+                        </label>
+
+                        <select id="municipio"
+                                name="municipio"
+                                class="form-control-custom"
+                                required>
+
+                            <option value="">
+                                Seleccione un municipio...
+                            </option>
+
+                            <option>Quibdó</option>
+                            <option>Istmina</option>
+                            <option>Tadó</option>
+                            <option>Condoto</option>
+                            <option>Acandí</option>
+                            <option>Bahía Solano</option>
+                            <option>Nuquí</option>
+                            <option>Riosucio</option>
+                            <option>Carmen del Darién</option>
+                            <option>Lloró</option>
+                            <option>Medio Atrato</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Descripción -->
+
+                    <div class="form-group">
+
+                        <label for="descripcion">
+
+                            <i class="bi bi-chat-left-text-fill"></i>
+
+                            Descripción
+
+                        </label>
+
+                        <textarea id="descripcion"
+                                  name="descripcion"
+                                  class="form-control-custom"
+                                  rows="5"
+                                  placeholder="Describe lo sucedido..."
+                                  required></textarea>
+
+                    </div>
+
+
+                    <!-- Evidencia -->
+
+                    <div class="form-group">
+
+                        <label for="evidencia">
+
+                            <i class="bi bi-paperclip"></i>
+
+                            Evidencia
+
+                        </label>
+
+                        <input id="evidencia"
+                               type="file"
+                               name="evidencia"
+                               class="form-control-custom"
+                               accept=".jpg,.jpeg,.png,.gif,.webp,.mp4,.mov,.avi,.mkv,.webm"
+                               required>
+
+                        <small>
+
+                            Formatos permitidos: imágenes y videos.
+
+                        </small>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="btn-submit">
+
+                        <i class="bi bi-send-fill"></i>
+
+                        Enviar Reporte
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- CONCLUSIÓN -->
+<!-- ========================================================= -->
+
+<section id="conclusion"
+         class="conclusion-section">
+
+    <div class="container">
+
+        <div class="conclusion-content"
+             data-aos="fade-up">
+
+            <span class="section-label light-label">
+
+                <i class="bi bi-heart-fill"></i>
+
+                Compromiso con el territorio
+
+            </span>
+
+            <h2>
+                Proteger el Chocó es proteger la vida.
+            </h2>
+
+            <p>
+
+                La minería ilegal representa uno de los mayores desafíos
+                para el departamento del Chocó. Sus consecuencias afectan
+                el medio ambiente, la biodiversidad y las comunidades que
+                dependen de los recursos naturales para su bienestar.
+
+            </p>
+
+            <p>
+
+                Solo mediante la participación ciudadana, el fortalecimiento
+                de las instituciones y el compromiso con el desarrollo
+                sostenible será posible conservar la riqueza natural y
+                cultural de este territorio.
+
+            </p>
+
+            <a href="#inicio"
+               class="btn-back-top">
+
+                <i class="bi bi-arrow-up"></i>
+
+                Volver al inicio
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <div class="footer-column">
+
+                <h3>
+                    🌿 SIGMINCHO
+                </h3>
+
+                <p>
+
+                    Sistema orientado al reporte ciudadano y a la
+                    sensibilización sobre los impactos ambientales
+                    y sociales de la minería ilegal en el Chocó.
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Menú
+                </h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#inicio">
+                            Inicio
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#impacto">
+                            Impacto Ambiental
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#social">
+                            Impacto Social
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#soluciones">
+                            Soluciones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#reportar">
+                            Reportar
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Tecnologías
+                </h3>
+
+                <p>
+                    🐍 Python
+                </p>
+
+                <p>
+                    ⚡ Flask
+                </p>
+
+                <p>
+                    🗄️ MySQL
+                </p>
+
+                <p>
+                    🎨 HTML5
+                </p>
+
+                <p>
+                    🎯 CSS3
+                </p>
+
+                <p>
+                    💻 JavaScript
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 | Universidad Tecnológica del Chocó
+                “Diego Luis Córdoba”
+
+            </p>
+
+            <p>
+
+                Ingeniería de Telecomunicaciones e Informática
+
+            </p>
+
+            <p>
+
+                Desarrollado por
+                <strong>Leifer Samir</strong>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- AOS -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js">
+</script>
+
+
+<script>
+
+    AOS.init({
+        duration: 800,
+        once: true,
+        offset: 80
+    });
+
+</script>
+
+
+<!-- ========================================================= -->
+<!-- BUSCADOR / NAVEGACIÓN SUAVE -->
+<!-- ========================================================= -->
+
+<script>
+
+    document.querySelectorAll('a[href^="#"]').forEach(function(enlace) {
+
+        enlace.addEventListener("click", function(e) {
+
+            const destino = document.querySelector(this.getAttribute("href"));
+
+            if (destino) {
+
+                e.preventDefault();
+
+                destino.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    });
+
+</script>
+
+
+</body>
+
+</html>

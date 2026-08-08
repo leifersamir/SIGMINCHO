@@ -1,0 +1,353 @@
+{% extends "admin/base_admin.html" %}
+
+{% block titulo %}
+Reportes
+{% endblock %}
+
+{% block encabezado %}
+Gestión de Reportes
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container-fluid">
+
+    <!-- Encabezado -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h3 class="fw-bold text-success">
+
+                <i class="bi bi-file-earmark-text-fill"></i>
+
+                Reportes ciudadanos
+
+            </h3>
+
+            <p class="text-muted">
+
+                Administra todos los reportes enviados por los usuarios.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Tarjetas -->
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+
+                        Total Reportes
+
+                    </h6>
+
+                    <h2 class="fw-bold">
+
+                        {{ total_reportes }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+
+                        Municipios
+
+                    </h6>
+
+                    <h2 class="fw-bold">
+
+                        {{ total_municipios }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+
+                        Usuarios
+
+                    </h6>
+
+                    <h2 class="fw-bold">
+
+                        {{ total_usuarios }}
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Buscador -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <div class="input-group">
+
+                <span class="input-group-text">
+
+                    <i class="bi bi-search"></i>
+
+                </span>
+
+                <input
+                    type="text"
+                    id="buscarReporte"
+                    class="form-control"
+                    placeholder="Buscar por municipio o descripción...">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Tabla -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-header bg-success text-white">
+
+            <i class="bi bi-list-check"></i>
+
+            Lista de Reportes
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle mb-0" id="tablaReportes">
+
+                <thead class="table-light">
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Municipio</th>
+
+                        <th>Descripción</th>
+
+                        <th>Evidencia</th>
+
+                        <th>Fecha</th>
+
+                        <th>Estado</th>
+
+                        <th>Acciones</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for r in reportes %}
+                    <tr>
+
+    <td>
+
+        {{ r[0] }}
+
+    </td>
+
+    <td>
+
+        <span class="badge bg-success">
+
+            {{ r[1] }}
+
+        </span>
+
+    </td>
+
+    <td style="max-width:300px;">
+
+        {{ r[2] }}
+
+    </td>
+
+    <td>
+
+        {% if r[3].lower().endswith(('.jpg','.jpeg','.png','.gif','.webp')) %}
+
+            <a href="{{ url_for('static', filename='uploads/' + r[3]) }}"
+               target="_blank"
+               class="btn btn-primary btn-sm">
+
+                <i class="bi bi-image-fill"></i>
+
+                Ver Imagen
+
+            </a>
+
+        {% elif r[3].lower().endswith(('.mp4','.avi','.mov','.mkv','.webm')) %}
+
+            <a href="{{ url_for('static', filename='uploads/' + r[3]) }}"
+               target="_blank"
+               class="btn btn-dark btn-sm">
+
+                <i class="bi bi-camera-video-fill"></i>
+
+                Ver Video
+
+            </a>
+
+        {% else %}
+
+            <span class="text-muted">
+
+                Sin archivo
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {{ r[4] }}
+
+    </td>
+
+    <td>
+
+        {% if r[5] == "Pendiente" %}
+
+            <span class="badge bg-warning text-dark">
+
+                Pendiente
+
+            </span>
+
+        {% elif r[5] == "Aprobado" %}
+
+            <span class="badge bg-success">
+
+                Aprobado
+
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-danger">
+
+                Rechazado
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+    <td>
+
+        {% if r[5] == "Pendiente" %}
+
+           <a href="/aprobar/{{ r[0] }}"
+   class="btn btn-success btn-sm"
+   onclick="return confirm('¿Desea aprobar este reporte?')">
+
+           <a href="/rechazar/{{ r[0] }}"
+   class="btn btn-danger btn-sm"
+   onclick="return confirm('¿Desea rechazar este reporte?')">
+
+        {% else %}
+
+            <span class="text-muted">
+
+                Sin acciones
+
+            </span>
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const buscador = document.getElementById("buscarReporte");
+
+    const filas = document.querySelectorAll("#tablaReportes tbody tr");
+
+    buscador.addEventListener("keyup", function () {
+
+        const texto = this.value.toLowerCase();
+
+        filas.forEach(function (fila) {
+
+            const contenido = fila.textContent.toLowerCase();
+
+            if (contenido.includes(texto)) {
+
+                fila.style.display = "";
+
+            } else {
+
+                fila.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

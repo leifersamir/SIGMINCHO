@@ -1,0 +1,166 @@
+/* ================================
+   SIGMINCHO - HOME
+================================ */
+
+body {
+    margin: 0;
+    background: #f4f7f5;
+    color: #212529;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* ================================
+   NAVBAR
+================================ */
+
+.navbar {
+    background: #081921 !important;
+}
+
+.navbar-brand {
+    color: #d4af37 !important;
+}
+
+.navbar-brand:hover {
+    color: #22c55e !important;
+}
+
+
+/* ================================
+   HERO
+================================ */
+
+.hero-home {
+    background: linear-gradient(
+        135deg,
+        #0b3d1b,
+        #14532d
+    );
+
+    color: white;
+    padding: 100px 0;
+}
+
+.hero-home h1 {
+    font-weight: 800;
+}
+
+.hero-home p {
+    color: rgba(255,255,255,.9);
+}
+
+
+/* Icono del Hero */
+
+.hero-icon {
+    font-size: 120px;
+    color: #22c55e;
+}
+
+
+/* ================================
+   CARACTERÍSTICAS
+================================ */
+
+.caracteristicas {
+    padding: 70px 0;
+    background: #f4f7f5;
+}
+
+.caracteristicas .card {
+    border: none;
+    border-radius: 18px;
+    transition: .3s;
+}
+
+.caracteristicas .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.15) !important;
+}
+
+
+/* ================================
+   FORMULARIO DE REPORTE
+================================ */
+
+.reporte {
+    padding: 80px 0;
+    background: #ffffff;
+}
+
+.reporte .card {
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.reporte .card-header {
+    background: #14532d !important;
+}
+
+.reporte textarea {
+    resize: vertical;
+}
+
+
+/* ================================
+   BOTONES
+================================ */
+
+.btn-success {
+    background: #22c55e;
+    border-color: #22c55e;
+}
+
+.btn-success:hover {
+    background: #14532d;
+    border-color: #14532d;
+}
+
+
+/* ================================
+   MENSAJES
+================================ */
+
+.alert {
+    border-radius: 12px;
+}
+
+
+/* ================================
+   FOOTER
+================================ */
+
+.footer-home {
+    background: #081921;
+    color: white;
+    padding: 45px 0;
+    text-align: center;
+}
+
+.footer-home h5 {
+    color: #22c55e;
+}
+
+.footer-home p {
+    color: #d1d5db;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .hero-home {
+        padding: 70px 20px;
+        text-align: center;
+    }
+
+    .hero-icon {
+        font-size: 80px;
+        margin-top: 30px;
+    }
+
+}

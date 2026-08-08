@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SIGMINCHO</title>
+
+    <link rel="icon"
+          href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/home.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="/home">
+
+            🌳 SIGMINCHO
+
+        </a>
+
+        <div class="d-flex align-items-center">
+
+            <span class="text-white me-3">
+
+                <i class="bi bi-person-circle"></i>
+
+                {{ nombre }}
+
+            </span>
+
+            <a href="/logout"
+               class="btn btn-outline-light">
+
+                <i class="bi bi-box-arrow-right"></i>
+
+                Salir
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero-home">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <h1 class="display-5 fw-bold">
+                    Reporta casos de minería ilegal
+                </h1>
+
+                <p class="lead">
+                    Ayúdanos a proteger los ríos, bosques y comunidades del Chocó.
+                </p>
+
+            </div>
+
+            <div class="col-lg-5 text-center">
+
+                <i class="bi bi-shield-check hero-icon"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TARJETAS -->
+
+<div class="container mt-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-camera-fill display-4 text-success"></i>
+
+                    <h4 class="mt-3">
+
+                        Evidencias
+
+                    </h4>
+
+                    <p>
+
+                        Adjunta fotografías o videos del lugar.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-geo-alt-fill display-4 text-primary"></i>
+
+                    <h4 class="mt-3">
+
+                        Ubicación
+
+                    </h4>
+
+                    <p>
+
+                        Selecciona el municipio donde ocurrió el hecho.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow border-0 h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-shield-fill-check display-4 text-warning"></i>
+
+                    <h4 class="mt-3">
+
+                        Confidencial
+
+                    </h4>
+
+                    <p>
+
+                        Tu reporte será tratado de forma segura.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container mt-5">
+    <!-- FORMULARIO -->
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-header bg-success text-white">
+
+                <h4 class="mb-0">
+
+                    <i class="bi bi-file-earmark-plus-fill"></i>
+
+                    Nuevo Reporte
+
+                </h4>
+
+            </div>
+
+            <div class="card-body">
+
+                <form action="/subir_reporte"
+                      method="POST"
+                      enctype="multipart/form-data">
+
+                    <!-- Municipio -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+
+                            Municipio
+
+                        </label>
+
+                        <select
+                            name="municipio"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+
+                                Seleccione...
+
+                            </option>
+
+                            <option>Quibdó</option>
+                            <option>Istmina</option>
+                            <option>Tadó</option>
+                            <option>Condoto</option>
+                            <option>Acandí</option>
+                            <option>Bahía Solano</option>
+                            <option>Nuquí</option>
+                            <option>Riosucio</option>
+                            <option>Carmen del Darién</option>
+                            <option>Lloró</option>
+                            <option>Medio Atrato</option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Descripción -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+
+                            Descripción
+
+                        </label>
+
+                        <textarea
+                            name="descripcion"
+                            rows="5"
+                            class="form-control"
+                            placeholder="Describe lo sucedido..."
+                            required></textarea>
+
+                    </div>
+
+                    <!-- Evidencia -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-bold">
+
+                            Evidencia (Imagen o Video)
+
+                        </label>
+
+                        <input
+                            type="file"
+                            name="evidencia"
+                            class="form-control"
+                            accept=".jpg,.jpeg,.png,.gif,.webp,.mp4,.mov,.avi,.mkv,.webm"
+                            required>
+
+                    </div>
+
+                    <div class="d-grid">
+
+                        <button
+                            class="btn btn-success btn-lg">
+
+                            <i class="bi bi-send-fill"></i>
+
+                            Enviar Reporte
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Mensajes -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+{% if messages %}
+
+<div class="mt-4">
+
+    {% for categoria, mensaje in messages %}
+
+    <div class="alert alert-{{ 'success' if categoria=='success' else 'danger' }} alert-dismissible fade show">
+
+        {{ mensaje }}
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"></button>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endwith %}
+
+</div>
+
+<!-- Footer -->
+
+<footer class="bg-dark text-white mt-5 py-4">
+
+    <div class="container text-center">
+
+        <h5>SIGMINCHO</h5>
+
+        <p class="mb-0">
+
+            Sistema para el reporte ciudadano de minería ilegal en el Chocó.
+
+        </p>
+
+        <small>
+
+            Universidad Tecnológica del Chocó - Ingeniería de Telecomunicaciones e Informática
+
+        </small>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

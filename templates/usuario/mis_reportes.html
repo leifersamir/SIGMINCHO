@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mis reportes | Minería Ilegal en el Chocó</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        body {
+            background: #f4f8f5;
+            color: #333;
+        }
+
+        .reportes-container {
+            max-width: 1200px;
+            margin: 130px auto 60px;
+            padding: 20px;
+        }
+
+        .titulo-reportes {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .titulo-reportes h1 {
+            color: #14532d;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .titulo-reportes p {
+            color: #666;
+        }
+
+        .tabla-contenedor {
+            background: white;
+            border-radius: 18px;
+            overflow-x: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,.10);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 850px;
+        }
+
+        thead {
+            background: #14532d;
+            color: white;
+        }
+
+        th {
+            padding: 16px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: #f5faf6;
+        }
+
+        .descripcion {
+            max-width: 280px;
+            text-align: left;
+        }
+
+        .evidencia-img {
+            width: 90px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .btn-ver {
+            display: inline-block;
+            background: #14532d;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: .3s;
+        }
+
+        .btn-ver:hover {
+            background: #22c55e;
+            color: white;
+        }
+
+        .estado {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #fff3cd;
+            color: #856404;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .sin-reportes {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .sin-reportes .icono {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .sin-reportes h3 {
+            color: #14532d;
+            margin-bottom: 10px;
+        }
+
+        .sin-reportes p {
+            color: #777;
+        }
+
+        .acciones {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-volver {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-volver:hover {
+            background: #22c55e;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="reportes-container">
+
+
+    <!-- TÍTULO -->
+
+    <div class="titulo-reportes">
+
+        <h1>
+            📋 Mis reportes
+        </h1>
+
+        <p>
+            Bienvenido, <strong>{{ nombre }}</strong>.
+            Aquí puedes consultar los reportes registrados.
+        </p>
+
+    </div>
+
+
+    {% if reportes %}
+
+
+    <!-- TABLA -->
+
+    <div class="tabla-contenedor">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        #
+                    </th>
+
+                    <th>
+                        Municipio
+                    </th>
+
+                    <th>
+                        Descripción
+                    </th>
+
+                    <th>
+                        Evidencia
+                    </th>
+
+                    <th>
+                        Fecha
+                    </th>
+
+                    <th>
+                        Estado
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+
+                {% for reporte in reportes %}
+
+                <tr>
+
+                    <td>
+                        {{ loop.index }}
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            {{ reporte[1] }}
+                        </strong>
+
+                    </td>
+
+
+                    <td class="descripcion">
+
+                        {{ reporte[2] }}
+
+                    </td>
+
+
+                    <td>
+
+                        {% if reporte[3] %}
+
+                            {% set extension = reporte[3].split('.')[-1].lower() %}
+
+
+                            {% if extension in ['jpg', 'jpeg', 'png', 'gif', 'webp'] %}
+
+                                <img
+                                    src="{{ url_for('static', filename='uploads/' + reporte[3]) }}"
+                                    alt="Evidencia"
+                                    class="evidencia-img"
+                                >
+
+                                <br><br>
+
+                                <a
+                                    href="{{ url_for('static', filename='uploads/' + reporte[3]) }}"
+                                    target="_blank"
+                                    class="btn-ver"
+                                >
+                                    Ver evidencia
+                                </a>
+
+
+                            {% else %}
+
+                                <a
+                                    href="{{ url_for('static', filename='uploads/' + reporte[3]) }}"
+                                    target="_blank"
+                                    class="btn-ver"
+                                >
+                                    🎥 Ver video
+                                </a>
+
+                            {% endif %}
+
+                        {% else %}
+
+                            Sin evidencia
+
+                        {% endif %}
+
+                    </td>
+
+
+                    <td>
+
+                        {{ reporte[4] }}
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="estado">
+
+                            {{ reporte[5] or 'Pendiente' }}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- SIN REPORTES -->
+
+    <div class="tabla-contenedor">
+
+        <div class="sin-reportes">
+
+            <div class="icono">
+                📭
+            </div>
+
+            <h3>
+                No tienes reportes registrados
+            </h3>
+
+            <p>
+                Cuando envíes un reporte de minería ilegal,
+                aparecerá aquí.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    {% endif %}
+
+
+    <!-- VOLVER -->
+
+    <div class="acciones">
+
+        <a href="/home" class="btn-volver">
+            ← Volver al inicio
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

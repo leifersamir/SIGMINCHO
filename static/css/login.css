@@ -1,0 +1,190 @@
+/* ==============================
+   LOGIN
+============================== */
+
+.login-page {
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url("../img/retroexcavadora.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* ==============================
+   CONTENEDOR LOGIN
+============================== */
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+
+    padding: 40px;
+
+    background: rgba(8, 25, 33, 0.92);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(8px);
+
+    text-align: center;
+
+    color: white;
+}
+
+
+/* ==============================
+   LOGO
+============================== */
+
+.login-container img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+
+/* ==============================
+   TITULO
+============================== */
+
+.login-container h2 {
+    color: #22C55E !important;
+}
+
+
+/* ==============================
+   DESCRIPCIÓN
+============================== */
+
+.login-container .descripcion {
+    color: #d1d5db;
+}
+
+
+/* ==============================
+   CAMPOS
+============================== */
+
+.login-container .form-control {
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.login-container .form-control:focus {
+    border-color: #22C55E;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(34, 197, 94, 0.25);
+}
+
+
+/* ==============================
+   BOTÓN INGRESAR
+============================== */
+
+.btn-login {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #22C55E;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: #14532D;
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   BOTÓN REGISTRARSE
+============================== */
+
+.login-container .btn-outline-success {
+    border-radius: 10px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.login-container .btn-outline-success:hover {
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   ALERTAS
+============================== */
+
+.login-container .alert {
+    border-radius: 10px;
+}
+
+
+/* ==============================
+   SEPARADOR
+============================== */
+
+.login-container hr {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 25px 0;
+}
+
+
+/* ==============================
+   ETIQUETAS
+============================== */
+
+.login-container .form-label {
+    color: white;
+    font-weight: 500;
+}
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 576px) {
+
+    .login-page {
+        padding: 15px;
+    }
+
+    .login-container {
+        padding: 30px 22px;
+    }
+
+}
