@@ -1,3 +1,7 @@
+
+import pymysql
+pymysql.install_as_MySQLdb()
+
 from flask import Flask, render_template, request, redirect, flash, session, make_response
 from routes.auth import auth_bp, init_app
 from routes.usuario import usuario_bp, init_usuario
