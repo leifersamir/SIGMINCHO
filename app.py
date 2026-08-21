@@ -15,9 +15,7 @@ import os
 import uuid
 
 app = Flask(__name__)
-
-app.secret_key = "mineria_choco_2026"
-
+app.secret_key = os.getenv("SECRET_KEY", "mineria_choco_2026")
 app.config["MYSQL_HOST"] = MYSQL_HOST
 app.config["MYSQL_USER"] = MYSQL_USER
 app.config["MYSQL_PASSWORD"] = MYSQL_PASSWORD
